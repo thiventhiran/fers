@@ -2,9 +2,8 @@ var mongoose = require('mongoose')
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var mongooseHistory = require('mongoose-history');
-// var patchHistory = require('mongoose-patch-history');
 
-var AppSchema = new mongoose.Schema({
+var CaseSchema = new mongoose.Schema({
     id: {
         type: String,
         lowercase: true,
@@ -19,26 +18,36 @@ var AppSchema = new mongoose.Schema({
         trim: true,
         required: [true, "can't be blank"]
     },
-    owner: {
-        type: String,
-        required: [true, "can't be blank"]
-    },
-    description: {
+    type: {
         type: String,
         trim: true,
         required: [true, "can't be blank"]
     },
-    definition: {
-        type: Schema.Types.Mixed,
-        default: {}
+    details: {
+        type: String,
+        trim: true,
+        required: [true, "can't be blank"]
     },
-    settings: {
-        type: Schema.Types.Mixed,
-        default: {}
+    assignedto: {
+        type: String,
+        trim: true,
+        required: [true, "can't be blank"]
     },
-    versions: {
-        type: Array,
-        default: [0.1]
+    priority: {
+        type: String,
+        required: [true, "can't be blank"]
+    },
+    startdate: {
+        type: Date,
+        required: [true, "can't be blank"]
+    },
+    enddate: {
+        type: Date,
+        required: [true, "can't be blank"]
+    },
+    location: {
+        type: String,
+        required: [true, "can't be blank"]
     }
 }, {
         runSettersOnQuery: true,
@@ -47,8 +56,8 @@ var AppSchema = new mongoose.Schema({
         updatedby: true
     });
 
-AppSchema.statics.createCRUD = true
-AppSchema.plugin(uniqueValidator, { message: 'is already taken.' });
-AppSchema.plugin(mongooseHistory);
+CaseSchema.statics.createCRUD = true
+CaseSchema.plugin(uniqueValidator, { message: 'is already taken.' });
+CaseSchema.plugin(mongooseHistory);
 
-module.exports = mongoose.model('App', AppSchema);
+module.exports = mongoose.model('Case', CaseSchema);
