@@ -5,7 +5,7 @@ const _ = require('lodash');
 exports.cloneApp = class CloneApp extends Task {
     constructor() {
         super()
-        this.name = 'app:clone'
+        this.name = 'case:clone'
         this.description = 'Clone App'
         this.frequency = 0
         this.queue = 'default'

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 exports.Create = class AppCreate extends Action {
 	constructor() {
 		super()
-		this.name = 'app:create'
+		this.name = 'case:create'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -30,7 +30,7 @@ exports.Create = class AppCreate extends Action {
 
 	async run(data) {
 		try {
-			data.response.app = await api.models.app.create(data.params)
+			data.response.case = await api.models.case.create(data.params)
 			data.response.status = 'ok'
 		} catch (error) {
 			throw error.errors[0]
@@ -42,7 +42,7 @@ exports.Create = class AppCreate extends Action {
 exports.Update = class AppUpdate extends Action {
 	constructor() {
 		super()
-		this.name = 'app:update'
+		this.name = 'case:update'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -60,11 +60,11 @@ exports.Update = class AppUpdate extends Action {
 		var appdata;
 		var attributes = {}
 		try {
-			await api.models.app.update({ "id": data.params.id }, data.params.fields)
+			await api.models.case.update({ "id": data.params.id }, data.params.fields)
 			data.response.status = 'ok'
-			data.response.app = await api
+			data.response.case = await api
 				.models
-				.app
+				.case
 				.findOne({ id: data.params.id })
 		} catch (error) {
 			throw error.errors[0]
@@ -76,7 +76,7 @@ exports.Update = class AppUpdate extends Action {
 exports.Read = class AppGet extends Action {
 	constructor() {
 		super()
-		this.name = 'app:read'
+		this.name = 'case:read'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -90,7 +90,7 @@ exports.Read = class AppGet extends Action {
 	async run(data) {
 		var appdata;
 		try {
-			data.response.app = await api.models.app.findOne({ id: data.params.id })
+			data.response.case = await api.models.case.findOne({ id: data.params.id })
 			data.response.status = 'ok'
 		} catch (error) {
 			throw error.errors[0]
@@ -102,7 +102,7 @@ exports.Read = class AppGet extends Action {
 exports.Find = class AppFind extends Action {
 	constructor() {
 		super()
-		this.name = 'app:find'
+		this.name = 'case:find'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -131,7 +131,7 @@ exports.Find = class AppFind extends Action {
 					throw error.errors[0]
 				}
 			}
-			data.response.results = await api.models.app.find(filter.where)
+			data.response.results = await api.models.case.find(filter.where)
 				.limit(filter.limit)
 				.skip(filter.skip)
 				.sort(filter.sort)
@@ -154,7 +154,7 @@ exports.Find = class AppFind extends Action {
 exports.Delete = class AppDelete extends Action {
 	constructor() {
 		super()
-		this.name = 'app:delete'
+		this.name = 'case:delete'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -169,7 +169,7 @@ exports.Delete = class AppDelete extends Action {
 		var appdata;
 		var attributes = {}
 		try {
-			await api.models.app.remove({ "id": data.params.id })
+			await api.models.case.remove({ "id": data.params.id })
 			data.response.status = 'ok'
 		} catch (error) {
 			throw error.errors[0]
@@ -181,7 +181,7 @@ exports.Delete = class AppDelete extends Action {
 exports.Clone = class AppClone extends Action {
 	constructor() {
 		super()
-		this.name = 'app:clone'
+		this.name = 'case:clone'
 		this.description = this.name
 		this.outputExample = {}
 		this.authenticate = true
@@ -201,7 +201,7 @@ exports.Clone = class AppClone extends Action {
 
 	async run(data) {
 		try {
-			await api.tasks.enqueue('app:clone', data.params, 'default')
+			await api.tasks.enqueue('case:clone', data.params, 'default')
 			data.response.message = 'Clone Task Submitted'
 			data.response.status = 'ok'
 		} catch (error) {

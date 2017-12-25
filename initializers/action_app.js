@@ -35,7 +35,7 @@ module.exports = class ActionAppInitializer extends Initializer {
 
 						//Check if App is part of User profile before allowing Access
 					} else if (appid && apps && Array.isArray(apps) && apps.indexOf(appid) > -1) {
-						api.info.app = JSON.parse(JSON.stringify(await api.models.app.findOne({ id: appid })));
+						api.info.case = JSON.parse(JSON.stringify(await api.models.case.findOne({ id: appid })));
 
 					} else {
 						throw new Error('Invalid Data Request');

@@ -13,6 +13,7 @@ log.txt
 npm-debug.log*
 actionhero-*.log
 package-lock.json
+*.min.js
 
 .idea/
 .sass-cache/

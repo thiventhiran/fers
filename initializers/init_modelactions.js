@@ -82,7 +82,7 @@ module.exports = class ModelActionsInitializer extends Initializer {
 
 				//Pull the appdata
 				const appfilter = { "where": { "id": appid } }
-				promises.push(api.models.app.findOne(appfilter.where));
+				promises.push(api.models.case.findOne(appfilter.where));
 
 				//Pull the metadata
 				const viewfilter = { "where": { "appid": appid, "type": viewtype, "id": metadataid } }
