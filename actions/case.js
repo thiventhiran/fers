@@ -10,20 +10,29 @@ exports.Create = class AppCreate extends Action {
 		this.outputExample = {}
 		this.authenticate = true
 		this.inputs = {
-			owner: {
-				required: true
-			},
 			id: {
 				required: true
 			},
 			name: {
 				required: true
 			},
-			description: {
+			type: {
 				required: true
 			},
-			definition: {
-				required: false
+			details: {
+				required: true
+			},
+			assignedto: {
+				required: true
+			},
+			priority: {
+				required: true
+			},
+			startdate: {
+				required: true
+			},
+			location: {
+				required: true
 			}
 		}
 	}

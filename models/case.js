@@ -42,8 +42,7 @@ var CaseSchema = new mongoose.Schema({
         required: [true, "can't be blank"]
     },
     enddate: {
-        type: Date,
-        required: [true, "can't be blank"]
+        type: Date
     },
     location: {
         type: String,
