@@ -4,6 +4,14 @@ var Schema = mongoose.Schema;
 var mongooseHistory = require('mongoose-history');
 
 var RecordSchema = new mongoose.Schema({
+    caseid: {
+        type: String,
+        lowercase: true,
+        required: [
+            true, "can't be blank"
+        ],
+        index: true
+    },
     id: {
         type: String,
         lowercase: true,

@@ -7,34 +7,45 @@ exports.Create = class RecordCreate extends Action {
 		super()
 		this.name = 'record:create'
 		this.description = this.name
-		this.middleware = ['preProcessor_validateRecord', 'postProcessor_formatRecord']
+		// this.middleware = ['preProcessor_validateRecord', 'postProcessor_formatRecord']
 		this.outputExample = {}
 		this.authenticate = true
 		this.applevel = true
 		this.inputs = {
-			entityid: {
-				required: true
+			caseid: {
+				required:true
 			},
 			id: {
-				required: false
+				required:true
+				
 			},
-			appid: {
-				required: true
+			name: {
+				required:true
 			},
-			data: {
-				required: true
+			type: {
+				required:true
+			},
+			details: {
+				required:true
+			},
+			collectedby: {
+				required:true
+			},
+			collectiondate: {
+				required:true
 			}
 		}
 	}
 
 	async run(data) {
+		console.log(data)
 		var recorddata;
 		try {
 			data.response.record = await api.models.record.create(data.params)
 			data.response.status = 'ok'
 		} catch (error) {
 			data.response.status = 'error'
-			throw error.errors[0]
+			data.response.error = error
 		}
 
 	}
@@ -112,13 +123,13 @@ exports.Find = class RecordFind extends Action {
 		super()
 		this.name = 'record:find'
 		this.description = this.name
-		this.middleware = ['postProcessor_formatRecord']
+		// this.middleware = ['postProcessor_formatRecord']
 		this.outputExample = {}
 		this.authenticate = true
-		this.applevel = true
+		// this.applevel = true
 		this.inputs = {
 			appid: {
-				required: true
+				required: false
 			},
 			filter: {
 				required: false
