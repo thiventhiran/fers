@@ -42,7 +42,8 @@ exports.Create = class AppCreate extends Action {
 			data.response.case = await api.models.case.create(data.params)
 			data.response.status = 'ok'
 		} catch (error) {
-			throw error.errors[0]
+			data.response.error = error;	
+			data.response.status = 'error'
 		}
 
 	}
