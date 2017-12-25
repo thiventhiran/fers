@@ -27,13 +27,13 @@ var UserSchema = new mongoose.Schema({
 			true, "can't be blank"
 		]
 	},
-	firstName: {
+	firstname: {
 		type: String,
 		required: [
 			true, "can't be blank"
 		]
 	},
-	lastName: {
+	lastname: {
 		type: String,
 		required: [
 			true, "can't be blank"

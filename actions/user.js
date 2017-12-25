@@ -15,10 +15,10 @@ exports.UserSignup = class UserSignup extends Action {
 			password: {
 				required: true
 			},
-			firstName: {
+			firstname: {
 				required: true
 			},
-			lastName: {
+			lastname: {
 				required: true
 			}
 		}
@@ -92,10 +92,10 @@ exports.UserEdit = class UserEdit extends Action {
 			password: {
 				required: false
 			},
-			firstName: {
+			firstname: {
 				required: false
 			},
-			lastName: {
+			lastname: {
 				required: false
 			}
 		}

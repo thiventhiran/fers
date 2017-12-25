@@ -137,7 +137,7 @@ module.exports = class ToolsInitializer extends Initializer {
         }
 
         api.tools.getname = function (data) {
-            return [data.firstName, data.lastName].join(' ')
+            return [data.firstname, data.lastname].join(' ')
         }
 
         /*!
